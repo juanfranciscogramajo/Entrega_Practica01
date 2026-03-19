@@ -1,22 +1,28 @@
 import random
 from turtle import left
-words = [
-"python",
-"programa",
-"variable",
-"funcion",
-"bucle",
-"cadena",
-"entero",
-"lista",
-]
-word = random.choice(words)
+category = {
+    "programacion": ["python","programa","variable","funcion","bucle","cadena","entero","lista"],
+    "equipos de futbol argentino": ["boca","river","gimnasia","racing","san lorenzo"],
+    "marcas de autos": ["ford","chevrolet","toyota","honda","nissan"],
+    "paises": ["argentina","brasil","chile","colombia","peru"]
+}
+word = random.choice(category)
 guessed = []
 attempts = 6
 puntaje = 0
 
 print("¡Bienvenido al Ahorcado!")
 print()
+print("Categorías disponibles:")
+for cat in category.keys():
+    print(f"- {cat}")
+while True:
+    categoryInput = input("Elige una categoria: ").lower()
+    if categoryInput in category:
+        word = random.choice(category[categoryInput])
+        break
+    else:
+        print("Categoria no valida, Por favor elige una categoria valida ")
 while attempts > 0:
     # Mostrar progreso: letras adivinadas y guiones para las que faltan
     progress = ""
