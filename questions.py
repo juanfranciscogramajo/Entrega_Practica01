@@ -1,4 +1,5 @@
 import random
+from turtle import left
 words = [
 "python",
 "programa",
@@ -20,6 +21,7 @@ while attempts > 0:
     for letter in word:
         if letter in guessed:
             progress += letter + " "
+            
         else:
             progress += "_ "
     print(progress)
@@ -30,7 +32,11 @@ while attempts > 0:
     print(f"Intentos restantes: {attempts}")
     print(f"Letras usadas: {', '.join(guessed)}")
     
-    letter = input("Ingresá una letra: ")
+    letterInput = input("Adivina una letra: ")
+    if letterInput.isalpha() and len(letterInput) > 1:
+        print("Entrada no valida")
+        continue
+    letter = letterInput 
 
     if letter in guessed:
         print("Ya usaste esa letra.")
